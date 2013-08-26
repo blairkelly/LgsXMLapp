@@ -9,17 +9,6 @@ var app = http.createServer(function(req, res) {
     res.end(index);
 });
 
-function wf(towrite) {
-    var fs = require('fs');
-    fs.writeFile("the.xml", towrite, function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log("Saved to file.");
-        }
-    });
-}
-
 // Socket.io server listens to our app
 var io = require('socket.io').listen(app);
 
@@ -32,22 +21,53 @@ var thetime = new Date().toJSON();
 function sendTime() {
     thetime = new Date().toJSON();
     io.sockets.emit('time', { time: thetime });
-    console.log("Time sent.");
-    //wf(thetime);  //writes "thetime" to file.
+    console.log("Sent time.");
+}
+
+
+
+var rf = function() {
+    var fs = require('fs');
+    data = fs.readFileSync('the.xml', {encoding: 'utf-8'});
+    return data;
+}
+var sendfileguts = function() {
+    io.sockets.emit('fileguts', { fileguts: rf() });
+}
+function wfsync(towrite) {
+    var fs = require('fs');
+    fs.writeFileSync("the.xml", towrite);
+    console.log("Saved to file, Sync.");
+}
+function wfcb(towrite) {
+    var fs = require('fs');
+    fs.writeFile("the.xml", towrite, function(err) {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log("Saved to file, A-Sync.");
+        }
+    });
 }
 
 // Send current time every 10 secs
-setInterval(sendTime, 10000);
+//setInterval(sendTime, 10000);
 
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {
-    socket.emit('welcome', { message: 'Hi there.', time: new Date().toJSON() });
-    socket.on('write to file', function(thedata) {
-        console.log("Funciton called: Write to File");
-        console.log("The data: " + thedata);
-        wf("received");  //writes "thetime" to file.
-    });
     console.log("Somebody connected.");
+    socket.emit('welcome', { message: 'Hi' }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
+    sendfileguts();
+    
+    socket.on('write to file', function(thedata) {
+        console.log("Function called: Write to File");
+        console.log("Data I just received: " + thedata.data);
+        wfsync(thedata.data);  //writes received data to file
+        sendfileguts();  //sends back contents of file.
+    });
+
 });
+
+
 
 app.listen(3000);
