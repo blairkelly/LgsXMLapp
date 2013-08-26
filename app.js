@@ -9,13 +9,13 @@ var app = http.createServer(function(req, res) {
     res.end(index);
 });
 
-function wf(thetime) {
+function wf(towrite) {
     var fs = require('fs');
-    fs.writeFile("the.xml", "The date is: " + thetime, function(err) {
+    fs.writeFile("the.xml", towrite, function(err) {
         if(err) {
             console.log(err);
         } else {
-            console.log("Saved.");
+            console.log("Saved to file.");
         }
     });
 }
@@ -28,10 +28,12 @@ io.configure(function(){
 });
 
 // Send current time to all connected clients
+var thetime = new Date().toJSON();
 function sendTime() {
-    var thetime = new Date().toJSON();
+    thetime = new Date().toJSON();
     io.sockets.emit('time', { time: thetime });
-    wf(thetime);  //writes "thetime" to file.
+    console.log("Time sent.");
+    //wf(thetime);  //writes "thetime" to file.
 }
 
 // Send current time every 10 secs
@@ -40,7 +42,11 @@ setInterval(sendTime, 10000);
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {
     socket.emit('welcome', { message: 'Hi there.', time: new Date().toJSON() });
-    //socket.on('i am client', console.log);
+    socket.on('write to file', function(thedata) {
+        console.log("Funciton called: Write to File");
+        console.log("The data: " + thedata);
+        wf("received");  //writes "thetime" to file.
+    });
     console.log("Somebody connected.");
 });
 

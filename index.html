@@ -1,26 +1,34 @@
 <!doctype html>
 <html>
     <head>
-        <script src='//code.jquery.com/jquery-1.7.2.min.js'></script>
+        <script src='jquery-2.0.3.min.js'></script>
         <script src='//localhost:3000/socket.io/socket.io.js'></script>
         <script>
             var socket = io.connect('//localhost:3000');
 
             socket.on('welcome', function(data) {
                 $('#messages').append('<div>' + data.message + ' :: The time is: ' + data.time + '</div>');
-
-                socket.emit('i am client', {data: 'foo!'});
+                //socket.emit('i am client', {data: 'foo!'});
             });
+
             socket.on('time', function(data) {
                 console.log(data);
                 $('#messages').append('<li>' + data.time + '</li>');
             });
+
             socket.on('error', function() { console.error(arguments) });
             socket.on('message', function() { console.log(arguments) });
         </script>
     </head>
     <body>
-        Hack hack bing bing bong bong.
+        <div class="btnsend">Send something</div>
         <ul id='messages'></ul>
     </body>
 </html>
+
+<script type="text/javascript">
+    $('.btnsend').click(function() {
+        socket.emit('write to file', {data: 'some data!'});
+        $('#messages').append('<li>SENT</li>');
+    });
+</script>
