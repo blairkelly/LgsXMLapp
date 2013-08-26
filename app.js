@@ -20,10 +20,12 @@ io.configure(function(){
 var thetime = new Date().toJSON();
 function sendTime() {
     thetime = new Date().toJSON();
+    //thetime = new Date().valueOf();
     io.sockets.emit('time', { time: thetime });
     console.log("Sent time.");
 }
-
+// Send current time every 10 secs
+setInterval(sendTime, 5000);
 
 
 var rf = function() {
@@ -50,8 +52,6 @@ function wfcb(towrite) {
     });
 }
 
-// Send current time every 10 secs
-//setInterval(sendTime, 10000);
 
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {

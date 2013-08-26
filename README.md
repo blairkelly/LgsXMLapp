@@ -3,6 +3,9 @@ LgsXMLapp
 
 For editing XML
 
+to run:
+node app.js
+(from git bash prompt)
 
 npm install socket.io
 - if necessary

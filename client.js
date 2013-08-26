@@ -1,12 +1,20 @@
+/*
+var date1 = "2013-08-26T19:15:39.919Z";
+var date2 = "2013-08-26T21:31:56.455Z";
+var datetocompare1 = new Date(date1).getTime();
+var datetocompare2 = new Date(date2).getTime();
+*/
+
 var socket = io.connect('//localhost:3000');
 
 socket.on('welcome', function(data) {});
 
 socket.on('time', function(data) {
-    $('#lastsaved').attr('placeholder', data.time);
+    //$('#lastsaved').text(data.time);
 });
+
 socket.on('fileguts', function(data) {
-    $('#lastsaved').attr('placeholder', data.fileguts);
+    $('#lastsaved').text(data.fileguts);
     $('.lastsavedholder').addClass('received');
 });
 
@@ -21,4 +29,5 @@ $(document).ready(function() {
             socket.emit('write to file', {data: theval});
         }
     });
+
 });

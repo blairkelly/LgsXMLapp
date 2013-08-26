@@ -31,3 +31,11 @@ body {
 
 .lastsavedholder {opacity: 0;}
 .lastsavedholder.received {opacity: 1; -webkit-transition: opacity .432s ease-in-out;}
+
+#lastsaved {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+  color: #777;
+}
