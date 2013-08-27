@@ -24,8 +24,8 @@ function sendTime() {
     io.sockets.emit('time', { time: thetime });
     console.log("Sent time.");
 }
-// Send current time every 10 secs
-setInterval(sendTime, 5000);
+// Send current time at set interval
+setInterval(sendTime, 30000);
 
 
 var rf = function() {

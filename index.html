@@ -13,18 +13,73 @@
     <body>
         <div class="container">
 
-            <form class="form-signin">
-                <h2 class="form-signin-heading">Save something.</h2>
-                <input type="text" id="userinput" class="input-block-level" placeholder="Type something to save.">
-                <div class="lastsavedholder">
-                    What you last saved:
-                    <div id="lastsaved" style="margin-top: 3px; margin-bottom: 10px;">
+            <div class="editor-pad">
+                <div class="top row-fluid">
+                    <div class="editor-title span8">
+                        <h2 class="form-signin-heading">LGS Together &middot; XML Editor</h2>
+                    </div>
+                    <div class="controls span4">
+                        <button class="btn btn-large btn-primary btnsave" type="submit">Save</button>
+                        <br/>
+                        <button class="btn btn-medium btnaddjourney" type="submit" style="margin-top: 12px;">Add Journey</button>
                     </div>
                 </div>
-                <button class="btn btn-large btn-primary btnsave" type="submit">Send &amp; Save</button>
-            </form>
+                
+                
+                <div class="ticketholder received">
+                    Journeys Here
+                </div>
+                
+                
+            </div>
 
         </div> <!-- /container -->
+
+        <div class="tickettemplate">
+            <div class="ticket rounded-corners">
+                <div class="images row-fluid">
+                    <div class="thumb span6">
+                        Thumbnail
+                        <br/>
+                        <img src="http://lgstogether.local/images/journeys/smiling-man-thumbnail.jpg" width="143" height="130" />
+                    </div>
+                    <div class="enlarged span6">
+                        Enlarged
+                        <br/>
+                        <img src="http://lgstogether.local/images/journeys/smiling-man-enlarged.jpg" width="286" height="260" />
+                    </div>
+                </div>
+                <div class="imageslocations row-fluid">
+                    <div class="thumb span6">
+                        <input type="text" class="input-block-level" placeholder="Thumbnail Filename">
+                    </div>
+                    <div class="enlarged span6">
+                        <input type="text" class="input-block-level" placeholder="Enlarged Filename">
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12" style="text-align: right;">
+                        <button class="btn btn-small btnrefreshpaths" type="submit">Refresh Images</button>
+                    </div>
+                </div>
+                
+                <div class="row-fluid" style="margin-top: 10px;">
+                    <div class="span12">
+                        <textarea type="text" class="story input-block-level" placeholder="Story" style="resize: none;" maxlength="160"></textarea>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <input type="text" class="speakersname input-block-level" placeholder="Name">
+                    </div>
+                    <div class="span6">
+                        <input type="text" class="speakerslocation input-block-level" placeholder="Location">
+                    </div>
+                </div>
+
+                <button class="btn btn-small btn-danger btndiscard" type="submit">Discard Journey</button>
+            </div>
+        </div>
 
         <!--bootstrap javascripts -->
         <!-- Placed at the end of the document so the pages load faster -->

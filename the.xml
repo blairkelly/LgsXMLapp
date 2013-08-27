@@ -1,10 +1,16 @@
 <?xml version="1.0"?>
 <journeys>
 	<journey>
-		<title>First One</title>
-		<story>This is a great story of great hope.</story>
-		<picture>crazyimage.jpg</picture>
-		<modified>2013-08-26T19:15:39.919Z</modified>
+		<images>
+			<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
+			<enlarged>smiling-man-enlarged.jpg</enlarged>
+		</images>
+		<story>This is a great story of great hope. And getting one's fingers crushed.</story>
+		<details>
+			<name>Fabien Marronaud, the Hero</name>
+			<location>Limoges, France</location>
+		</details>
+		<modified>2013-08-26T19:16:59.926Z</modified>
 		<created>2013-08-26T19:15:39.919Z</created>
 	</journey>
 </journeys>
