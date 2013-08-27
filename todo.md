@@ -1,5 +1,3 @@
-- create "add journey" functionality
 - add save functionality
 - add refresh images functionality
-- add discard journey functionality
-- add date modified/created functionality.
+- add date modified functionality

@@ -55,6 +55,7 @@ body {
   opacity: 1;
   -webkit-transition: opacity .432s ease-in-out;
 }
+
 /*.journeysholder.received {
     opacity: 1; 
 }*/
@@ -64,7 +65,6 @@ body {
 .ticket .images {margin-bottom: 15px;}
 .ticket .images .thumb {text-align: right;}
 .ticket .dates {color: #666;}
-
 
 .input-block-level {}
 

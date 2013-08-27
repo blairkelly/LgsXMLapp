@@ -1,22 +1,6 @@
 <?xml version="1.0"?>
 <alldata>
 
-	<journeytemplate>
-		<journey>
-			<images>
-				<thumbnail></thumbnail>
-				<enlarged></enlarged>
-			</images>
-			<story></story>
-			<details>
-				<name></name>
-				<location></location>
-			</details>
-			<modified></modified>
-			<created></created>
-		</journey>
-	</journeytemplate>
-
 	<journeys>
 		<journey>
 			<images>

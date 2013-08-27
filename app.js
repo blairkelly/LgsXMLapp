@@ -65,7 +65,6 @@ io.sockets.on('connection', function(socket) {
         wfsync(thedata.data);  //writes received data to file
         sendfileguts();  //sends back contents of file.
     });
-
 });
 
 
