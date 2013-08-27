@@ -1,3 +1,2 @@
 - add save functionality
-- add refresh images functionality
 - add date modified functionality

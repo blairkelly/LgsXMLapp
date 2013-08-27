@@ -41,7 +41,6 @@ body {
 
 .tickettemplate {
   max-width: 800px;
-  ddisplay: none;
   padding: 19px 29px 19px 29px;
   margin: 0 auto;
   margin-top: 25px;
@@ -64,6 +63,8 @@ body {
 .ticket .images img {border: 1px solid #e6e6e6; padding: 3px; background: #fff;}
 .ticket .images {margin-bottom: 15px;}
 .ticket .images .thumb {text-align: right;}
+.ticket .images .thumb img {width: 143px; height: 130px;}
+.ticket .images .enlarged img {width: 286px; height: 260px;}
 .ticket .dates {color: #666;}
 
 .input-block-level {}

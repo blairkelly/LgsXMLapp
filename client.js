@@ -10,10 +10,27 @@ var datetocompare1 = new Date(date1).getTime();
 var datetocompare2 = new Date(date2).getTime();
 */
 
+var generateuniqueid = function(objs_to_compare) {
+    var thekey;
+    var isunique = false;
+    while(!isunique) {
+        thekey = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+        isunique = true;
+        objs_to_compare.each(function() {
+            var keytocheck = $(this).find('uid');
+            if( keytocheck == thekey ) {
+                isunique = false;
+            }
+        });
+    }
+    return thekey;
+}
+
 var socket = io.connect('//localhost:3000');
-
 socket.on('welcome', function(data) {});
-
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
 });
@@ -28,16 +45,18 @@ var bindformactions = function (theticket) {
     var associatedxmlobj = theticket.data('associatedxmlobj');
     theticket.find('.btndiscard').click(function(e) {
         e.preventDefault();
+        var wt = $(this).data('warningtext');
+        var ot = $(this).text();
         if($(this).hasClass('btn-danger')) {
             $(this).removeClass('btn-danger');
             $(this).addClass('btn-warning');
-            $(this).text("Are you sure?");
+            $(this).text(wt);
             var forlater = $(this);
             setTimeout(function() {
                 forlater.removeClass('btn-warning');
                 forlater.addClass('btn-danger');
-                forlater.text("Discard Journey");
-            }, 2222);
+                forlater.text(ot);
+            }, 1111);
         } else if($(this).hasClass('btn-warning')) {
             discardjourney(this);
             console.log("Discarded Journey");
@@ -79,6 +98,7 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.speakerslocation').val(dataobj.thelocation);
     theticket.find('.created').text("Created: " + dataobj.datecreated);
     theticket.find('.modified').text("Modified: " + dataobj.datemodified);
+    theticket.attr('id', dataobj.uid);
 }
 var pulldata = function (theobj) {
     var dataobj = new Object;
@@ -90,9 +110,10 @@ var pulldata = function (theobj) {
     dataobj.thelocation = theobj.find('details>location').text();
     dataobj.datecreated = theobj.find('created').text();
     dataobj.datemodified = theobj.find('modified').text();
+    dataobj.uid = theobj.find('uid').text();
     return dataobj;
 }
-var clearentrydata = function (theobj) {
+var clearentrydata = function (theobj, uniqueid) {
     var createdate = new Date().toJSON();
     theobj.find('images>thumbnail').text('');
     theobj.find('images>enlarged').text('');
@@ -101,21 +122,22 @@ var clearentrydata = function (theobj) {
     theobj.find('details>location').text('');
     theobj.find('created').text(createdate);
     theobj.find('modified').text(createdate);
-}
-var updatedata = function() {
-    //this sort of just re-creates
+    theobj.find('uid').text(uniqueid);
 }
 var addblankjourney = function () {
     var journeys = xmlqueryobj.find('journeys');
+    var xmljourneyobjs = xmlqueryobj.find('journeys>journey');
     var sampledataentry = xmlqueryobj.find('journeys>journey').eq(0);
     var cleandataentry = sampledataentry.clone().prependTo(journeys);
-    clearentrydata(cleandataentry);
+    var uniqueid = generateuniqueid(xmljourneyobjs);
+    clearentrydata(cleandataentry, uniqueid);
     var tt = $('.tickettemplate .ticket'); //pull tickettemplate
     var th = $('.ticketholder'); //specify ticketholder
     var newticket = tt.clone().prependTo(th);
     newticket.data('associatedxmlobj', cleandataentry);
     newticket.find('.created').text("Created: " + cleandataentry.find('created').text());
     newticket.find('.modified').text("Modified: " + cleandataentry.find('modified').text());
+    newticket.attr('id', uniqueid);
     bindformactions(newticket);
 }
 var discardjourney = function (thediscardbtn) {
@@ -161,11 +183,11 @@ socket.on('message', function() { console.log(arguments) });
 $(document).ready(function() {
     $('.btnsave').click(function(e) {
         e.preventDefault();
-        console.log("Functionality Disconnected.");
+        console.log("Saved.");
     });
     $('.btnaddjourney').click(function(e) {
         e.preventDefault();
         addblankjourney();
-        console.log("Add Journey");
+        console.log("Added Journey");
     });
 });

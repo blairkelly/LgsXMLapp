@@ -25,7 +25,7 @@ function sendTime() {
     console.log("Sent time.");
 }
 // Send current time at set interval
-setInterval(sendTime, 30000);
+//setInterval(sendTime, 30000);
 
 
 var rf = function() {
