@@ -1,16 +1,24 @@
 <?xml version="1.0"?>
-<journeys>
-	<journey>
-		<images>
-			<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
-			<enlarged>smiling-man-enlarged.jpg</enlarged>
-		</images>
-		<story>This is a great story of great hope. And getting one's fingers crushed.</story>
-		<details>
-			<name>Fabien Marronaud</name>
-			<location>Limage, France</location>
-		</details>
-		<modified>2013-08-26T19:16:59.926Z</modified>
-		<created>2013-08-26T19:15:39.919Z</created>
-	</journey>
-</journeys>
+<alldata>
+
+	<journeytemplate>
+		<journey>
+			<images>
+				<thumbnail></thumbnail>
+				<enlarged></enlarged>
+			</images>
+			<story></story>
+			<details>
+				<name></name>
+				<location></location>
+			</details>
+			<modified></modified>
+			<created></created>
+		</journey>
+	</journeytemplate>
+
+	<journeys>
+		
+	</journeys>
+
+</alldata>	
