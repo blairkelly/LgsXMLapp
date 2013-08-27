@@ -51,12 +51,16 @@ var ismodded = function(te, associatedticket) {
             theOriginalXMLobj = $(this);
         }
     });
-    var to_val = theOriginalXMLobj.find(te.selector).text();
-    if(te_val != to_val) {
-        //modified
-        var newdate = new Date().toJSON();
-        theTargetXMLobj.find('modified').text(newdate);
-        associatedticket.find('.modified').text("Modified: " + newdate);
+    var newdate = new Date().toJSON();
+    if(!associatedticket.hasClass('new-entry')) {
+        var to_val = theOriginalXMLobj.find(te.selector).text();
+        if(te_val != to_val) {
+            //modified
+            theTargetXMLobj.find('modified').text(newdate);
+            associatedticket.find('.modified').text("Modified: " + newdate);
+            hasbeenmodified = true;
+        }
+    } else {
         hasbeenmodified = true;
     }
     //console.log("originl val: " + to_val);
@@ -80,6 +84,7 @@ var bindformactions = function (theticket) {
             }, 1111);
         } else if($(this).hasClass('btn-warning')) {
             discardjourney(this);
+            dosave();
             console.log("Discarded Journey");
         }
     });
@@ -114,7 +119,7 @@ var bindformactions = function (theticket) {
 var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.data('associatedxmlobj', dataobj.associatedxmlobj);
     theticket.find('.images>.thumb>img').attr('src', imagepath + ( (dataobj.thumbfile.text() != '') ? dataobj.thumbfile.text() : 'unspecified-thumbnail.jpg' ) ).data('ao', dataobj.thumbfile);
-    theticket.find('.images>.enlarged>img').attr('src', imagepath + ( (dataobj.thumbfile.text() != '') ? dataobj.thumbfile.text() : 'unspecified-enlarged.jpg' )).data('ao', dataobj.enlargedfile);
+    theticket.find('.images>.enlarged>img').attr('src', imagepath + ( (dataobj.enlargedfile.text() != '') ? dataobj.enlargedfile.text() : 'unspecified-enlarged.jpg' )).data('ao', dataobj.enlargedfile);
     theticket.find('.imageslocations>.thumb>input').val(dataobj.thumbfile.text()).data('ao', dataobj.thumbfile);
     theticket.find('.imageslocations>.enlarged>input').val(dataobj.enlargedfile.text()).data('ao', dataobj.enlargedfile);
     theticket.find('.story').val(dataobj.thestory.text()).data('ao', dataobj.thestory);
@@ -160,6 +165,7 @@ var addblankjourney = function () {
     var th = $('.ticketholder'); //specify ticketholder
     var newticket = tt.clone().prependTo(th);
     var dataobj = pulldata(cleandataentry);
+    newticket.addClass('new-entry');
     applyentrydatatoticket(newticket, dataobj);
     bindformactions(newticket);
 }
@@ -173,6 +179,7 @@ var fillticketholder = function () {
     var journey = xmlqueryobj.find( "journeys>journey" );
     var tt = $('.tickettemplate .ticket'); //pull tickettemplate
     var th = $('.ticketholder'); //specify ticketholder
+    th.empty();
     journey.each(function() {
         //pull information
         var dataobj = pulldata($(this));
@@ -193,27 +200,40 @@ var loadXML = function (thedata) {
     xmlqueryobjorig = $( xmlDocOrig );
     //populate the ticket
     fillticketholder();
-    //console.log(xml);
 }
 socket.on('fileguts', function(data) {
     loadXML(data.fileguts);
 });
+socket.on('saved', function() { 
+    $('.btnsave').removeAttr('disabled');
+});
 socket.on('error', function() { console.error(arguments) });
 socket.on('message', function() { console.log(arguments) });
-var dosave = function() {
-    if(xmlDoc == xmlDocOrig) {
-        console.log("SAME");
-    } else {
-        console.log("not same");
+
+var xmlerize = function(xmlData) {
+    var xmlString;
+    //IE
+    if (window.ActiveXObject){
+        xmlString = xmlData.xml;
     }
+    // code for Mozilla, Firefox, Opera, etc.
+    else {
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+    }
+    return xmlString;
+}
+var dosave = function() {
+    setTimeout(function () {
+        var xmlstring = xmlerize(xmlDoc);
+        hasbeenmodified = false;
+        socket.emit('write to file', {data: xmlstring});
+    }, 111);
 }
 $(document).ready(function() {
     $('.btnsave').click(function(e) {
         e.preventDefault();
-        if(hasbeenmodified) {
-            dosave();
-            console.log("Saved.");
-        }
+        $('.btnsave').attr('disabled', 'disabled');
+        dosave();
     });
     $('.btnaddjourney').click(function(e) {
         e.preventDefault();
@@ -221,3 +241,5 @@ $(document).ready(function() {
         console.log("Added Journey");
     });
 });
+
+//setInterval(dosave, 10000);

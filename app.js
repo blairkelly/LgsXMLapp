@@ -40,6 +40,7 @@ function wfsync(towrite) {
     var fs = require('fs');
     fs.writeFileSync("the.xml", towrite);
     console.log("Saved to file, Sync.");
+    io.sockets.emit('saved', true);
 }
 function wfcb(towrite) {
     var fs = require('fs');
@@ -61,7 +62,6 @@ io.sockets.on('connection', function(socket) {
     
     socket.on('write to file', function(thedata) {
         console.log("Function called: Write to File");
-        console.log("Data I just received: " + thedata.data);
         wfsync(thedata.data);  //writes received data to file
         sendfileguts();  //sends back contents of file.
     });
