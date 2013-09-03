@@ -21,6 +21,7 @@
                     <div class="controls span4">
                         <button class="btn btn-large btn-primary btnsave" type="submit">Save</button>
                         <br/>
+                        <button class="btn btn-medium btnexpandall" type="submit" style="margin-top: 12px;" data-alttext="Collapse All">Expand All</button>
                         <button class="btn btn-medium btnaddjourney" type="submit" style="margin-top: 12px;">Add Journey</button>
                     </div>
                 </div>
@@ -33,51 +34,69 @@
         </div> <!-- /container -->
 
         <div class="tickettemplate hidden">
-            <div class="ticket rounded-corners">
-                <div class="images row-fluid">
-                    <div class="thumb span6">
-                        Thumbnail
-                        <br/>
-                        <img src="" width="143" height="130" />
-                    </div>
-                    <div class="enlarged span6">
-                        Enlarged
-                        <br/>
-                        <img src="" width="286" height="260" />
-                    </div>
-                </div>
-                <div class="imageslocations row-fluid">
-                    <div class="thumb span6">
-                        <input type="text" class="input-block-level" placeholder="Thumbnail Filename">
-                    </div>
-                    <div class="enlarged span6">
-                        <input type="text" class="input-block-level" placeholder="Enlarged Filename">
+            <div class="ticket rounded-corners collapsed">
+                <div class="ticketpreview">
+                    <div class="row-fluid">
+                        <div class="name span4">
+                            name
+                        </div>
+                        <div class="location span4">
+                            location
+                        </div>
+                        <div class="quickdiscard span4" style="text-align: right;">
+                            <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Srsly?">Rid</button>
+                        </div>
                     </div>
                 </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <textarea type="text" class="story input-block-level" placeholder="Story" style="resize: none;" maxlength="160"></textarea>
+                <div class="ticketcontent">
+                    <div class="images row-fluid">
+                        <div class="thumb span6">
+                            Thumbnail
+                            <br/>
+                            <img src="" width="143" height="130" />
+                        </div>
+                        <div class="enlarged span6">
+                            Enlarged
+                            <br/>
+                            <img src="" width="286" height="260" />
+                        </div>
                     </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span6">
-                        <input type="text" class="speakersname input-block-level" placeholder="Name">
+                    <div class="imageslocations row-fluid">
+                        <div class="thumb span6">
+                            <input type="text" class="input-block-level" placeholder="Thumbnail Filename">
+                        </div>
+                        <div class="enlarged span6">
+                            <input type="text" class="input-block-level" placeholder="Enlarged Filename">
+                        </div>
                     </div>
-                    <div class="span6">
-                        <input type="text" class="speakerslocation input-block-level" placeholder="Location">
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <textarea type="text" class="story input-block-level" placeholder="Story" style="resize: none;" maxlength="160"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row-fluid dates">
-                    <div class="span6">
-                        <div class="created"></div>
-                        <div class="modified"></div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <input type="text" class="speakersname input-block-level" placeholder="Name">
+                        </div>
+                        <div class="span6">
+                            <input type="text" class="speakerslocation input-block-level" placeholder="Location">
+                        </div>
                     </div>
-                    <div class="span6">
+                    <div class="row-fluid dates">
+                        <div class="span6">
+                            <div class="created"></div>
+                            <div class="modified"></div>
+                        </div>
+                        <div class="span6">
+                        </div>
                     </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12" style="text-align: center; margin-top: 20px;">
-                        <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Are you sure?">Discard Journey</button>
+                    <div class="row-fluid">
+                        <div class="span6" style="text-align: center; margin-top: 20px;">
+                            <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Are you sure?">Discard Journey</button>
+                        </div>
+                        <div class="span6" style="text-align: center; margin-top: 20px;">
+                            <button class="btn btn-small btnhide" type="submit">Hide</button>
+                        </div>
                     </div>
                 </div>
             </div>

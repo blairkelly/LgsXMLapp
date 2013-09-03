@@ -1,30 +1,35 @@
-<?xml version="1.0"?><alldata>
+<?xml version="1.0"?>
+<alldata>
 
-	<journeys><journey>
-			<images>
-				<thumbnail>mom-hugging-daughter-thumbnail.jpg</thumbnail>
-				<enlarged>mom-daughter-smiling.jpg</enlarged>
-			</images>
-			<story>They grew up. And it was unfortunate.</story>
-			<details>
-				<name>Gary Robson</name>
-				<location>Burlington, Indiana</location>
-			</details>
-			<modified>2013-08-27T20:29:23.513Z</modified>
-			<created>2013-08-27T20:25:15.385Z</created>
-			<uid>b29f2973-3b9a-43ee-8b12-58319d82fa7b</uid>
-		</journey>
+	<template>
 		<journey>
 			<images>
 				<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
-				<enlarged>unspecified-enlarged.jpg</enlarged>
+				<enlarged>smiling-man-enlarged.jpg</enlarged>
 			</images>
-			<story>This app would not have been possible without Fabien. Thanks, Fabien.</story>
+			<story>This is a great story of great hope. And getting one's fingers crushed. That really did happen.</story>
 			<details>
 				<name>Fabien Marronaud</name>
-				<location>Limoges, France</location>
+				<location>Limage, France</location>
 			</details>
-			<modified>2013-08-27T20:25:08.422Z</modified>
+			<modified>2013-08-26T19:16:59.926Z</modified>
+			<created>2013-08-26T19:15:39.919Z</created>
+			<uid>9b0965a1-f0fc-4a98-bd87-f0d77c18109f</uid>
+		</journey>
+	</template>
+
+	<journeys>
+		<journey>
+			<images>
+				<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
+				<enlarged>smiling-man-enlarged.jpg</enlarged>
+			</images>
+			<story>This is a great story of great hope. And getting one's fingers crushed. That really did happen.</story>
+			<details>
+				<name>Fabien Marronaud</name>
+				<location>Limage, France</location>
+			</details>
+			<modified>2013-08-26T19:16:59.926Z</modified>
 			<created>2013-08-26T19:15:39.919Z</created>
 			<uid>9b0965a1-f0fc-4a98-bd87-f0d77c18109f</uid>
 		</journey>
@@ -38,10 +43,10 @@
 				<name>Gregory Pork</name>
 				<location>Fizbot, Trancetown</location>
 			</details>
-			<modified>2013-08-27T20:21:17.175Z</modified>
+			<modified>2013-08-27T01:52:22.157Z</modified>
 			<created>2013-08-27T01:51:37.703Z</created>
 			<uid>31acfd20-ed21-4ae7-84d9-b0278010e686</uid>
 		</journey>
 	</journeys>
 
-</alldata>
+</alldata>	

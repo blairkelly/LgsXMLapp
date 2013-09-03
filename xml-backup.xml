@@ -1,6 +1,23 @@
 <?xml version="1.0"?>
 <alldata>
 
+	<template>
+		<journey>
+			<images>
+				<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
+				<enlarged>smiling-man-enlarged.jpg</enlarged>
+			</images>
+			<story>This is a great story of great hope. And getting one's fingers crushed. That really did happen.</story>
+			<details>
+				<name>Fabien Marronaud</name>
+				<location>Limage, France</location>
+			</details>
+			<modified>2013-08-26T19:16:59.926Z</modified>
+			<created>2013-08-26T19:15:39.919Z</created>
+			<uid>9b0965a1-f0fc-4a98-bd87-f0d77c18109f</uid>
+		</journey>
+	</template>
+
 	<journeys>
 		<journey>
 			<images>

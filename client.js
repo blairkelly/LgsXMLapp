@@ -1,5 +1,6 @@
-//var imagepath = "http://lgstogether.local/images/journeys/";
-var imagepath = "/images/";
+var imagepath = "http://lgstogether.local/images/journeys/";
+//var imagepath = "/images/";
+
 var hasbeenmodified = false;
 var jsondate = new Date().toJSON();
 console.log(jsondate);
@@ -68,8 +69,19 @@ var ismodded = function(te, associatedticket) {
 }
 var bindformactions = function (theticket) {
     var associatedxmlobj = theticket.data('associatedxmlobj');
+    theticket.click(function() {
+        if($(this).hasClass('collapsed')) {
+            $(this).removeClass('collapsed');
+        }
+    });
+    theticket.find('.btnhide').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        theticket.addClass('collapsed');
+    });
     theticket.find('.btndiscard').click(function(e) {
         e.preventDefault();
+        e.stopPropagation();
         var wt = $(this).data('warningtext');
         var ot = $(this).text();
         if($(this).hasClass('btn-danger')) {
@@ -108,11 +120,13 @@ var bindformactions = function (theticket) {
     theticket.find('.speakersname').focusout(function () {
         var theval = $(this).val();
         $(this).data('ao').text(theval);
+        theticket.find('.ticketpreview .name').text(theval);
         ismodded($(this).data('ao'), theticket);
     });
     theticket.find('.speakerslocation').focusout(function () {
         var theval = $(this).val();
         $(this).data('ao').text(theval);
+        theticket.find('.ticketpreview .location').text(theval);
         ismodded($(this).data('ao'), theticket);
     });
 }
@@ -128,6 +142,9 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.created').text("Created: " + dataobj.datecreated.text()).data('ao', dataobj.datecreated);
     theticket.find('.modified').text("Modified: " + dataobj.datemodified.text()).data('ao', dataobj.datemodified);
     theticket.attr('id', dataobj.uid.text());
+
+    theticket.find('.ticketpreview .name').text(dataobj.thename.text()).data('ao', dataobj.thename);
+    theticket.find('.ticketpreview .location').text(dataobj.thelocation.text()).data('ao', dataobj.thelocation);
 }
 var pulldata = function (theobj) {
     var dataobj = new Object;
@@ -157,7 +174,7 @@ var clearentrydata = function (theobj, uniqueid) {
 var addblankjourney = function () {
     var journeys = xmlqueryobj.find('journeys');
     var xmljourneyobjs = xmlqueryobj.find('journeys>journey');
-    var sampledataentry = xmlqueryobj.find('journeys>journey').eq(0);
+    var sampledataentry = xmlqueryobj.find('template>journey').eq(0);
     var cleandataentry = sampledataentry.clone().prependTo(journeys);
     var uniqueid = generateuniqueid(xmljourneyobjs);
     clearentrydata(cleandataentry, uniqueid);
@@ -166,6 +183,7 @@ var addblankjourney = function () {
     var newticket = tt.clone().prependTo(th);
     var dataobj = pulldata(cleandataentry);
     newticket.addClass('new-entry');
+    newticket.removeClass('collapsed');
     applyentrydatatoticket(newticket, dataobj);
     bindformactions(newticket);
 }
@@ -239,6 +257,22 @@ $(document).ready(function() {
         e.preventDefault();
         addblankjourney();
         console.log("Added Journey");
+    });
+    $('.btnexpandall').click(function(e) {
+        e.preventDefault();
+        var thisbtn = $(this);
+        if(thisbtn.hasClass('expanded')) {
+            $('.ticketholder').find('.ticket').each(function () {
+                $(this).addClass('collapsed');
+            });
+            thisbtn.removeClass('expanded').text(thisbtn.data('originaltext'));
+        } else {
+            $('.ticketholder').find('.ticket').each(function () {
+                $(this).removeClass('collapsed');
+            });
+            thisbtn.addClass('expanded').data('originaltext', thisbtn.text()).text(thisbtn.data('alttext'));
+        }
+        
     });
 });
 

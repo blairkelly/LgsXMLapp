@@ -28,9 +28,12 @@ function sendTime() {
 //setInterval(sendTime, 30000);
 
 
+var thefile = "c://inetpub//wwwroot//lundbeck-lgstogether//Web//Content//xml//mosaic.xml";
+//var thefile = "the.xml";
+
 var rf = function() {
     var fs = require('fs');
-    data = fs.readFileSync('the.xml', {encoding: 'utf-8'});
+    data = fs.readFileSync(thefile, {encoding: 'utf-8'});
     return data;
 }
 var sendfileguts = function() {
@@ -38,13 +41,13 @@ var sendfileguts = function() {
 }
 function wfsync(towrite) {
     var fs = require('fs');
-    fs.writeFileSync("the.xml", towrite);
+    fs.writeFileSync(thefile, towrite);
     console.log("Saved to file, Sync.");
     io.sockets.emit('saved', true);
 }
 function wfcb(towrite) {
     var fs = require('fs');
-    fs.writeFile("the.xml", towrite, function(err) {
+    fs.writeFile(thefile, towrite, function(err) {
         if(err) {
             console.log(err);
         } else {
@@ -56,7 +59,7 @@ function wfcb(towrite) {
 
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {
-    console.log("Somebody connected.");
+    //console.log("Somebody connected.");
     socket.emit('welcome', { message: 'Hi' }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
     sendfileguts();
     
