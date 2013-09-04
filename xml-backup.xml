@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<alldata>
+<?xml version="1.0"?><alldata>
 
 	<template>
 		<journey>
@@ -12,41 +11,159 @@
 				<name>Fabien Marronaud</name>
 				<location>Limage, France</location>
 			</details>
+			<status></status>
 			<modified>2013-08-26T19:16:59.926Z</modified>
 			<created>2013-08-26T19:15:39.919Z</created>
 			<uid>9b0965a1-f0fc-4a98-bd87-f0d77c18109f</uid>
 		</journey>
 	</template>
 
-	<journeys>
+	<journeys><journey>
+			<images>
+				<thumbnail>lobster_thumbnail.jpg</thumbnail>
+				<enlarged>lobster_enlarged.jpg</enlarged>
+			</images>
+			<story>He was converted into a cybernetic lobster.</story>
+			<details>
+				<name>Rock Lobster</name>
+				<location>Atlantic Ocean</location>
+			</details>
+			<modified>2013-09-04T19:08:13.665Z</modified>
+			<created>2013-09-04T19:08:13.665Z</created>
+			<uid>8de6d3ea-19c1-4308-ba64-66fff00ef4d8</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>matthew.jpg</thumbnail>
+				<enlarged>matthew.jpg</enlarged>
+			</images>
+			<story>He's from Poland.</story>
+			<details>
+				<name>Matthew Newelski</name>
+				<location>Opole, Polska</location>
+			</details>
+			<modified>2013-09-04T17:29:56.797Z</modified>
+			<created>2013-09-04T17:29:56.797Z</created>
+			<uid>aa4d734f-fcf7-4a32-95bf-1b0e6ddd4a79</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>frog_1.jpg</thumbnail>
+				<enlarged>frog_1.jpg</enlarged>
+			</images>
+			<story>Space jam.</story>
+			<details>
+				<name>Jigaboo Jones</name>
+				<location>Fizwarp, Space</location>
+			</details>
+			<modified>2013-09-03T21:59:27.386Z</modified>
+			<created>2013-09-03T21:59:27.386Z</created>
+			<uid>f56d0ef4-6773-49b8-9266-76ad7e9dfb5c</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>oldsmobiles-bw.jpg</thumbnail>
+				<enlarged>oldsmobiles-bw.jpg</enlarged>
+			</images>
+			<story>He has no story.</story>
+			<details>
+				<name>Aneetoo Bops</name>
+				<location>Nasa, Florida</location>
+			</details>
+			<modified>2013-09-04T14:04:17.804Z</modified>
+			<created>2013-09-03T21:59:00.252Z</created>
+			<uid>be2f981f-d83b-4c89-95d2-a72b7ab583c8</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>andrew_2.jpg</thumbnail>
+				<enlarged>smiling-man-thumbnail.jpg</enlarged>
+			</images>
+			<story>Can twirl a claymore in his teeth.</story>
+			<details>
+				<name>Mark MacDonald</name>
+				<location>Edinburgh, Scotland</location>
+			</details>
+			<modified>2013-09-03T21:39:58.521Z</modified>
+			<created>2013-09-03T20:47:36.080Z</created>
+			<uid>9751f3c8-af61-489f-84c8-f868b0bfae12</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>mom-daughter-smiling.jpg</thumbnail>
+				<enlarged>unspecified-enlarged.jpg</enlarged>
+			</images>
+			<story>Makes great food.</story>
+			<details>
+				<name>David Pell</name>
+				<location>Tel Aviv, Israel</location>
+			</details>
+			<modified>2013-09-03T21:29:39.859Z</modified>
+			<created>2013-09-03T20:45:30.477Z</created>
+			<uid>f615e9fb-bc4c-4bfe-80b6-913b3b7cb0d5</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>burt.jpg</thumbnail>
+				<enlarged>burtandernie.jpg</enlarged>
+			</images>
+			<story>Heralds from Bollywood</story>
+			<details>
+				<name>Ronak Desai</name>
+				<location>Mumbai, India</location>
+			</details>
+			<modified>2013-09-03T21:30:27.344Z</modified>
+			<created>2013-09-03T20:44:57.442Z</created>
+			<uid>f16b28f6-4f42-4a4e-b950-6ece93a12ba1</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>andrew_1.jpg</thumbnail>
+				<enlarged>andrew_2.jpg</enlarged>
+			</images>
+			<story>His story is secret. He is a superhero. We can add to his story.</story>
+			<details>
+				<name>Andrew Carreiro</name>
+				<location>Crinkletunnel Bay, Catland</location>
+			</details>
+			<modified>2013-09-03T20:43:54.733Z</modified>
+			<created>2013-09-03T20:30:04.514Z</created>
+			<uid>9ee58251-9330-47ab-bc6b-04f920dc3b8d</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>frog_2.jpg</thumbnail>
+				<enlarged>frog_2.jpg</enlarged>
+			</images>
+			<story>Once bought so many frogs that there was an explosion at the frog factory.</story>
+			<details>
+				<name>Monica Chu</name>
+				<location>Frogbeans, Massachusetts </location>
+			</details>
+			<modified>2013-09-03T21:40:50.132Z</modified>
+			<created>2013-09-03T20:22:12.584Z</created>
+			<uid>28a3407e-035e-4973-9d71-f9cd8545dffd</uid>
+		</journey><journey>
+			<images>
+				<thumbnail>wozbot.jpg</thumbnail>
+				<enlarged>caroline.jpg</enlarged>
+			</images>
+			<story>Fuzbindle Crinkle Bins</story>
+			<details>
+				<name>Caroline Fu</name>
+				<location>Shanghai, China</location>
+			</details>
+			<modified>2013-09-03T21:56:42.373Z</modified>
+			<created>2013-09-03T20:18:04.415Z</created>
+			<uid>17efeeb5-6cae-4f59-ad67-fd3cc92cf367</uid>
+		</journey>
 		<journey>
 			<images>
-				<thumbnail>smiling-man-thumbnail.jpg</thumbnail>
-				<enlarged>smiling-man-enlarged.jpg</enlarged>
+				<thumbnail>burt.jpg</thumbnail>
+				<enlarged>burtandernie.jpg</enlarged>
 			</images>
 			<story>This is a great story of great hope. And getting one's fingers crushed. That really did happen.</story>
 			<details>
 				<name>Fabien Marronaud</name>
-				<location>Limage, France</location>
+				<location>Limoges, France</location>
 			</details>
-			<modified>2013-08-26T19:16:59.926Z</modified>
+			<modified>2013-09-04T19:19:53.545Z</modified>
 			<created>2013-08-26T19:15:39.919Z</created>
 			<uid>9b0965a1-f0fc-4a98-bd87-f0d77c18109f</uid>
 		</journey>
-		<journey>
-			<images>
-				<thumbnail>mom-hugging-daughter-thumbnail.jpg</thumbnail>
-				<enlarged>mom-hugging-daughter-thumbnail.jpg</enlarged>
-			</images>
-			<story>He lives in a fart-cave.</story>
-			<details>
-				<name>Gregory Pork</name>
-				<location>Fizbot, Trancetown</location>
-			</details>
-			<modified>2013-08-27T01:52:22.157Z</modified>
-			<created>2013-08-27T01:51:37.703Z</created>
-			<uid>31acfd20-ed21-4ae7-84d9-b0278010e686</uid>
-		</journey>
+		
 	</journeys>
 
-</alldata>	
+</alldata>
