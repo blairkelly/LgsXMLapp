@@ -59,7 +59,7 @@ function wfcb(towrite) {
 
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {
-    //console.log("Somebody connected.");
+    console.log("Client connected.");
     socket.emit('welcome', { message: 'Hi' }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
     sendfileguts();
     

@@ -29,12 +29,21 @@ var generateuniqueid = function(objs_to_compare) {
     }
     return thekey;
 }
+var makeboolean = function (v) {
+    if(v == "true" || v == "1") {
+        n = true;
+    } else if (v == "false" || !v || v == "0") {
+        n = false;
+    }
+    return n;
+}
 
-var socket = io.connect('//localhost:3000');
+var socket = io.connect('//10.1.140.64:3000');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
 });
+
 //globalize values
 var xml;
 var xmlDoc;
@@ -129,6 +138,16 @@ var bindformactions = function (theticket) {
         theticket.find('.ticketpreview .location').text(theval);
         ismodded($(this).data('ao'), theticket);
     });
+    theticket.find('.notexpandable').click(function () {
+        var theval = $(this).prop('checked');
+        $(this).data('ao').text(theval);
+        ismodded($(this).data('ao'), theticket);
+    });
+    theticket.find('.isdisabled').click(function () {
+        var theval = $(this).prop('checked');
+        $(this).data('ao').text(theval);
+        ismodded($(this).data('ao'), theticket);
+    });
 }
 var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.data('associatedxmlobj', dataobj.associatedxmlobj);
@@ -141,8 +160,9 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.speakerslocation').val(dataobj.thelocation.text()).data('ao', dataobj.thelocation);
     theticket.find('.created').text("Created: " + dataobj.datecreated.text()).data('ao', dataobj.datecreated);
     theticket.find('.modified').text("Modified: " + dataobj.datemodified.text()).data('ao', dataobj.datemodified);
+    theticket.find('.notexpandable').prop('checked', makeboolean(dataobj.notexpandable.text())).data('ao', dataobj.notexpandable);
+    theticket.find('.isdisabled').prop('checked', makeboolean(dataobj.isdisabled.text())).data('ao', dataobj.isdisabled);
     theticket.attr('id', dataobj.uid.text());
-
     theticket.find('.ticketpreview .name').text(dataobj.thename.text()).data('ao', dataobj.thename);
     theticket.find('.ticketpreview .location').text(dataobj.thelocation.text()).data('ao', dataobj.thelocation);
 }
@@ -154,6 +174,8 @@ var pulldata = function (theobj) {
     dataobj.thestory = theobj.find('story');
     dataobj.thename = theobj.find('details>name');
     dataobj.thelocation = theobj.find('details>location');
+    dataobj.notexpandable = theobj.find('options>notexpandable');
+    dataobj.isdisabled = theobj.find('options>disabled');
     dataobj.datecreated = theobj.find('created');
     dataobj.datemodified = theobj.find('modified');
     dataobj.uid = theobj.find('uid');
@@ -167,6 +189,8 @@ var clearentrydata = function (theobj, uniqueid) {
     theobj.find('story').text('');
     theobj.find('details>name').text('');
     theobj.find('details>location').text('');
+    theobj.find('options>notexpandable').text('false');
+    theobj.find('options>isdisabled').text('false');
     theobj.find('created').text(createdate);
     theobj.find('modified').text(createdate);
     theobj.find('uid').text(uniqueid);
@@ -208,6 +232,7 @@ var fillticketholder = function () {
         //bind
         bindformactions(newtt);
     });
+    $('.numberofjourneys').text(journey.length + " journey(s).");
 }
 var loadXML = function (thedata) {
     xml = thedata,
@@ -274,6 +299,16 @@ $(document).ready(function() {
         }
         
     });
+
+    document.addEventListener("keydown", function(e) {
+      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+        e.preventDefault();
+        $('.btnsave').focus();
+        $('.btnsave').attr('disabled', 'disabled');
+        dosave();
+      }
+    }, false);
+
 });
 
 //setInterval(dosave, 10000);

@@ -59,7 +59,10 @@ body {
     opacity: 1; 
 }*/
 
+
 .ticket {padding: 10px; background: #ffffff; border: 1px solid #3fa8e9; margin-bottom: 20px;}
+.ticket.collapsed {cursor: pointer;}
+.ticket.collapsed:hover {background: #e5fafd;}
 .ticket .ticketpreview {display: none;}
 .ticket .ticketpreview .row-fluid>div {min-height: 0px;}
 .ticket.collapsed .ticketcontent {display: none;}
@@ -70,8 +73,12 @@ body {
 .ticket .images .thumb img {max-height: 130px;}
 .ticket .images .enlarged img {max-height: 260px;}
 .ticket .dates {color: #666;}
+.ticket .options input.checkbox {display: inline-block; margin: 0 0 0 0; padding: 0 0 0 0;}
+.ticket .options {}
 
 .input-block-level {}
+
+.numberofjourneys {color: #345abc;}
 
 @media only screen and (max-width : 767px) {
   .ticket .images .thumb {text-align: left;}

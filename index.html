@@ -17,6 +17,7 @@
                 <div class="top row-fluid">
                     <div class="editor-title span8">
                         <h2 class="form-signin-heading">LGS Together &middot; XML Editor</h2>
+                        <div class="numberofjourneys"></div>
                     </div>
                     <div class="controls span4">
                         <button class="btn btn-large btn-primary btnsave" type="submit">Save</button>
@@ -82,12 +83,22 @@
                             <input type="text" class="speakerslocation input-block-level" placeholder="Location">
                         </div>
                     </div>
-                    <div class="row-fluid dates">
-                        <div class="span6">
+                    <div class="row-fluid">
+                        <div class="span5 dates">
                             <div class="created"></div>
                             <div class="modified"></div>
                         </div>
-                        <div class="span6">
+                        <div class="span7">
+                            <div class="row-fluid options">
+                                <div class="span4">
+                                </div>
+                                <div class="span4">
+                                    <input type="checkbox" class="notexpandable checkbox">&nbsp;&nbsp;not expandable
+                                </div>
+                                <div class="span4">
+                                    <input type="checkbox" class="isdisabled checkbox">&nbsp;&nbsp;disabled
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row-fluid">
@@ -95,7 +106,7 @@
                             <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Are you sure?">Discard Journey</button>
                         </div>
                         <div class="span6" style="text-align: center; margin-top: 20px;">
-                            <button class="btn btn-small btnhide" type="submit">Hide</button>
+                            <button class="btn btn-small btnhide btn-warning" type="submit">Hide</button>
                         </div>
                     </div>
                 </div>
