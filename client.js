@@ -1,4 +1,4 @@
-var imagepath = "http://lgstogether.local/images/journeys/";
+var imagepath = "http://bkelly.klick.com/images/journeys/";
 //var imagepath = "/images/";
 
 var hasbeenmodified = false;
@@ -38,7 +38,7 @@ var makeboolean = function (v) {
     return n;
 }
 
-var socket = io.connect('//10.1.140.64:3000');
+var socket = io.connect('//10.1.140.64:3001');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
