@@ -1,5 +1,7 @@
 //var imagepath = "http://bkelly.klick.com/images/journeys/";
-var imagepath = "/images/";
+var imagepath = "http://lgstogether.local/images/journeys/";
+//var imagepath = "/images/";
+
 
 var hasbeenmodified = false;
 var jsondate = new Date().toJSON();
