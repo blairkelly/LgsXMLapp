@@ -27,9 +27,15 @@ function sendTime() {
 // Send current time at set interval
 //setInterval(sendTime, 30000);
 
-
+var settingsfile = "settings.xml";
 var thefile = "c://inetpub//wwwroot//lundbeck-lgstogether//Web//Content//xml//mosaic.xml";
 //var thefile = "the.xml";
+
+var getsettings = function () {
+    var fs = require('fs');
+    data = fs.readFileSync(settingsfile, {encoding: 'utf-8'});
+    return data;
+}
 
 var rf = function() {
     var fs = require('fs');

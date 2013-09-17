@@ -1,5 +1,5 @@
-var imagepath = "http://bkelly.klick.com/images/journeys/";
-//var imagepath = "/images/";
+//var imagepath = "http://bkelly.klick.com/images/journeys/";
+var imagepath = "/images/";
 
 var hasbeenmodified = false;
 var jsondate = new Date().toJSON();
@@ -38,7 +38,7 @@ var makeboolean = function (v) {
     return n;
 }
 
-var socket = io.connect('//10.1.140.64:3001');
+var socket = io.connect('//10.0.1.7:3001');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
