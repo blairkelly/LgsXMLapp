@@ -40,7 +40,7 @@ var makeboolean = function (v) {
     return n;
 }
 
-var socket = io.connect('//10.0.1.7:3001');
+var socket = io.connect('//localhost:3001');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
