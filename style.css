@@ -15,7 +15,7 @@ body {
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
-.ticket {padding: 10px; background: #ffffff; border: 1px solid #3fa8e9; margin-bottom: 20px;}
+.ticket {padding: 10px; background: #ffffff; border: 1px solid #3fa8e9; margin-bottom: 20px; position: relative;}
 .ticket.collapsed {cursor: pointer;}
 .ticket.collapsed:hover {background: #e5fafd;}
 .ticket .ticketpreview {display: none;}
@@ -30,6 +30,21 @@ body {
 .ticket .dates {color: #666;}
 .ticket .options input.checkbox {display: inline-block; margin: 0 0 0 0; padding: 0 0 0 0;}
 .ticket .options {}
+
+.ticket .btn.btnhide {background: #3fa8e9; }
+.ticket .btn.btnhide.topcollapsebtn {
+  position: absolute; 
+  border-radius: 0; 
+  border: none; 
+  box-shadow: none; 
+  text-shadow: none; 
+  top: 0; 
+  right: 0; 
+  color: #fff;
+  -webkit-border-bottom-left-radius: 5px;
+     -moz-border-bottom-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+}
 
 .input-block-level {}
 
@@ -118,4 +133,5 @@ body {
 
   .ticket .images .thumb {text-align: left;}
   .top .controls {text-align: center;}
+
 }

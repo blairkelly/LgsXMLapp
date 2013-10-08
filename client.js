@@ -160,13 +160,13 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.story').val(dataobj.thestory.text()).data('ao', dataobj.thestory);
     theticket.find('.speakersname').val(dataobj.thename.text()).data('ao', dataobj.thename);
     theticket.find('.speakerslocation').val(dataobj.thelocation.text()).data('ao', dataobj.thelocation);
-    theticket.find('.created').text("Created: " + dataobj.datecreated.text()).data('ao', dataobj.datecreated);
-    theticket.find('.modified').text("Modified: " + dataobj.datemodified.text()).data('ao', dataobj.datemodified);
+    theticket.find('.created').html("Created: " + dataobj.datecreated.text()).data('ao', dataobj.datecreated);
+    theticket.find('.modified').html("Modified: " + dataobj.datemodified.text()).data('ao', dataobj.datemodified);
     theticket.find('.notexpandable').prop('checked', makeboolean(dataobj.notexpandable.text())).data('ao', dataobj.notexpandable);
     theticket.find('.isdisabled').prop('checked', makeboolean(dataobj.isdisabled.text())).data('ao', dataobj.isdisabled);
     theticket.attr('id', dataobj.uid.text());
-    theticket.find('.ticketpreview .name').text(dataobj.thename.text()).data('ao', dataobj.thename);
-    theticket.find('.ticketpreview .location').text(dataobj.thelocation.text()).data('ao', dataobj.thelocation);
+    theticket.find('.ticketpreview .name').html(dataobj.thename.text()).data('ao', dataobj.thename);
+    theticket.find('.ticketpreview .location').html(dataobj.thelocation.text() || '&nbsp;').data('ao', dataobj.thelocation);
 }
 var pulldata = function (theobj) {
     var dataobj = new Object;
