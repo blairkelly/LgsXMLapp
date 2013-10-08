@@ -31,6 +31,8 @@ body {
 .ticket .options input.checkbox {display: inline-block; margin: 0 0 0 0; padding: 0 0 0 0;}
 .ticket .options {}
 
+.ticket .nombre {position: absolute; left: 5px; top: 12px; color: #DEDEDE; font-size: 42px;}
+
 .ticket .btn.btnhide {background: #3fa8e9; }
 .ticket .btn.btnhide.topcollapsebtn {
   position: absolute; 

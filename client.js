@@ -224,6 +224,7 @@ var fillticketholder = function () {
     var tt = $('.tickettemplate .ticket'); //pull tickettemplate
     var th = $('.ticketholder'); //specify ticketholder
     th.empty();
+    var ttnombre=1;
     journey.each(function() {
         //pull information
         var dataobj = pulldata($(this));
@@ -233,6 +234,9 @@ var fillticketholder = function () {
         applyentrydatatoticket(newtt, dataobj);
         //bind
         bindformactions(newtt);
+        //number
+        newtt.find('.nombre').text(ttnombre);
+        ttnombre++;
     });
     $('.numberofjourneys').text(journey.length + " journey(s).");
 }
