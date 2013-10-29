@@ -1,7 +1,6 @@
-//var imagepath = "http://bkelly.klick.com/images/journeys/";
-var imagepath = "http://lgstogether.local/images/journeys/";
+var imagepath = "http://10.1.140.64:2345/images/journeys/";
+//var imagepath = "http://lgstogether.local/images/journeys/";
 //var imagepath = "/images/";
-
 
 var hasbeenmodified = false;
 var jsondate = new Date().toJSON();
@@ -40,7 +39,7 @@ var makeboolean = function (v) {
     return n;
 }
 
-var socket = io.connect('//localhost:3001');
+var socket = io.connect('//10.1.140.64:3001');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
@@ -165,8 +164,8 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.notexpandable').prop('checked', makeboolean(dataobj.notexpandable.text())).data('ao', dataobj.notexpandable);
     theticket.find('.isdisabled').prop('checked', makeboolean(dataobj.isdisabled.text())).data('ao', dataobj.isdisabled);
     theticket.attr('id', dataobj.uid.text());
-    theticket.find('.ticketpreview .name').html(dataobj.thename.text()).data('ao', dataobj.thename);
-    theticket.find('.ticketpreview .location').html(dataobj.thelocation.text() || '&nbsp;').data('ao', dataobj.thelocation);
+    theticket.find('.ticketpreview .first').html(dataobj.thumbfile.text()).data('ao', dataobj.thename);
+    theticket.find('.ticketpreview .second').html(dataobj.thename.text() || '&nbsp;').data('ao', dataobj.thelocation);
 }
 var pulldata = function (theobj) {
     var dataobj = new Object;
