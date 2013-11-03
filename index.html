@@ -8,7 +8,7 @@
         <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
         <script src='jquery-2.0.3.min.js'></script>
-        <script src='//10.1.140.64:3001/socket.io/socket.io.js'></script>
+        <script src='//10.0.1.4:3002/socket.io/socket.io.js'></script>
     </head>
     <body>
         <div class="container">
@@ -34,18 +34,27 @@
             </div>
         </div> <!-- /container -->
 
+        <div id="savedmodal" class="modal hide">  
+            <div class="modal-header">  
+                <h2>Saved!</h2>  
+            </div>      
+            <div class="modal-body">  
+                <p>Your changes have been saved.</p>  
+            </div>  
+        </div>  
+
         <div class="tickettemplate hidden">
             <div class="ticket rounded-corners collapsed">
                 <div class="ticketpreview">
                     <div class="row-fluid">
-                        <div class="first span4">
-                            
+                        <div class="first span3">
+                            <img src="" />
                         </div>
                         <div class="second span4">
                             
                         </div>
-                        <div class="quickdiscard span4" style="text-align: right;">
-                            <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Srsly?">Rid</button>
+                        <div class="third span5">
+                            
                         </div>
                     </div>
                 </div>
@@ -104,11 +113,14 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span6" style="text-align: center; margin-top: 20px;">
+                        <div class="span4" style="text-align: left; margin-top: 20px;">
                             <button class="btn btn-small btn-danger btndiscard" type="submit" data-warningtext="Are you sure?">Discard Journey</button>
                         </div>
-                        <div class="span6" style="text-align: center; margin-top: 20px;">
+                        <div class="span4" style="text-align: center; margin-top: 20px;">
                             <button class="btn btn-small btnhide btn-warning" type="submit">Hide</button>
+                        </div>
+                        <div class="span4" style="text-align: right; margin-top: 20px;">
+                            <button class="btn btn-small btn-primary btnsave" type="submit">Save</button>
                         </div>
                     </div>
                 </div>

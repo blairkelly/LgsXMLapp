@@ -1,20 +1,46 @@
-var http = require('http'),
-    fs = require('fs'),
-    // NEVER use a Sync function except at start-up!
-    index = fs.readFileSync(__dirname + '/index.html');
+//var thefile = "c://inetpub//wwwroot//lundbeck-lgstogether//Web//Content//xml//mosaic.xml";
+var thefile = "the.xml";
 
-// Send index.html to all requests
-var app = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end(index);
+
+var fs = require('fs');
+var app = require('express')(),           // start Express framework
+    server = require('http').createServer(app), // start an HTTP server
+    io = require('socket.io').listen(server);
+
+
+app.get('/', function (request, response) {
+  response.sendfile(__dirname + '/index.html');
+});
+app.get('/client.js', function (request, response) {
+  response.sendfile(__dirname + '/client.js');
+});
+app.get('/bootstrap/css/bootstrap.css', function (request, response) {
+  response.sendfile(__dirname + '/bootstrap/css/bootstrap.css');
+});
+app.get('/bootstrap/css/bootstrap-responsive.css', function (request, response) {
+  response.sendfile(__dirname + '/bootstrap/css/bootstrap-responsive.css');
 });
 
-// Socket.io server listens to our app
-var io = require('socket.io').listen(app);
+app.get('/style.css', function (request, response) {
+  response.sendfile(__dirname + '/style.css');
+});
+app.get('/jquery-2.0.3.min.js', function (request, response) {
+  response.sendfile(__dirname + '/jquery-2.0.3.min.js');
+});
+app.get('/jquery-2.0.3.min.map', function (request, response) {
+  response.sendfile(__dirname + '/jquery-2.0.3.min.map');
+});
+
+app.get('/bootstrap/js/bootstrap.min.js', function (request, response) {
+  response.sendfile(__dirname + '/bootstrap/js/bootstrap.min.js');
+});
+
 
 io.configure(function(){
   io.set('log level', 1);  //tells IO socket to be mostly quiet.
 });
+server.listen(3002);                    // listen for incoming requests on the server
+
 
 // Send current time to all connected clients
 var thetime = new Date().toJSON();
@@ -24,12 +50,6 @@ function sendTime() {
     io.sockets.emit('time', { time: thetime });
     console.log("Sent time.");
 }
-// Send current time at set interval
-//setInterval(sendTime, 30000);
-
-var settingsfile = "settings.xml";
-var thefile = "c://inetpub//wwwroot//lundbeck-lgstogether//Web//Content//xml//mosaic.xml";
-//var thefile = "the.xml";
 
 var getsettings = function () {
     var fs = require('fs');
@@ -72,10 +92,6 @@ io.sockets.on('connection', function(socket) {
     socket.on('write to file', function(thedata) {
         console.log("Function called: Write to File");
         wfsync(thedata.data);  //writes received data to file
-        sendfileguts();  //sends back contents of file.
+        //sendfileguts();  //sends back contents of file.
     });
 });
-
-
-
-app.listen(3001);

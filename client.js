@@ -1,4 +1,5 @@
-var imagepath = "http://10.1.140.64:2345/images/journeys/";
+//var imagepath = "http://10.1.140.64:2345/images/journeys/";
+var imagepath = "http://lgstogether.com/images/journeys/";
 //var imagepath = "http://lgstogether.local/images/journeys/";
 //var imagepath = "/images/";
 
@@ -39,7 +40,8 @@ var makeboolean = function (v) {
     return n;
 }
 
-var socket = io.connect('//10.1.140.64:3001');
+//var socket = io.connect('//10.1.140.64:3002');
+var socket = io.connect('//10.0.1.4:3002');
 socket.on('welcome', function(data) {});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
@@ -88,6 +90,12 @@ var bindformactions = function (theticket) {
         e.preventDefault();
         e.stopPropagation();
         theticket.addClass('collapsed');
+    });
+    theticket.find('.btnsave').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('.btnsave').attr('disabled', 'disabled');
+        dosave();
     });
     theticket.find('.btndiscard').click(function(e) {
         e.preventDefault();
@@ -164,8 +172,9 @@ var applyentrydatatoticket = function(theticket, dataobj) {
     theticket.find('.notexpandable').prop('checked', makeboolean(dataobj.notexpandable.text())).data('ao', dataobj.notexpandable);
     theticket.find('.isdisabled').prop('checked', makeboolean(dataobj.isdisabled.text())).data('ao', dataobj.isdisabled);
     theticket.attr('id', dataobj.uid.text());
-    theticket.find('.ticketpreview .first').html(dataobj.thumbfile.text()).data('ao', dataobj.thename);
-    theticket.find('.ticketpreview .second').html(dataobj.thename.text() || '&nbsp;').data('ao', dataobj.thelocation);
+    theticket.find('.ticketpreview .first>img').attr('src', imagepath + ( (dataobj.thumbfile.text() != '') ? dataobj.thumbfile.text() : 'unspecified-thumbnail.jpg' ) ).data('ao', dataobj.thumbfile);
+    theticket.find('.ticketpreview .second').html(dataobj.thumbfile.text()).data('ao', dataobj.thename);
+    theticket.find('.ticketpreview .third').html(dataobj.thename.text() || '&nbsp;').data('ao', dataobj.thelocation);
 }
 var pulldata = function (theobj) {
     var dataobj = new Object;
@@ -252,8 +261,12 @@ var loadXML = function (thedata) {
 socket.on('fileguts', function(data) {
     loadXML(data.fileguts);
 });
-socket.on('saved', function() { 
+socket.on('saved', function() {
+    $('#savedmodal').modal();
     $('.btnsave').removeAttr('disabled');
+    setTimeout(function () {
+        $('#savedmodal').modal('hide');
+    }, 1600);
 });
 socket.on('error', function() { console.error(arguments) });
 socket.on('message', function() { console.log(arguments) });
@@ -308,7 +321,7 @@ $(document).ready(function() {
     document.addEventListener("keydown", function(e) {
       if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
         e.preventDefault();
-        $('.btnsave').focus();
+        //$('.btnsave').focus();
         $('.btnsave').attr('disabled', 'disabled');
         dosave();
       }
