@@ -1,8 +1,14 @@
-//var imagepath = "http://10.1.140.64:2345/images/journeys/";
-var imagepath = "http://lgstogether.com/images/journeys/";
-//var imagepath = "http://lgstogether.local/images/journeys/";
-//var imagepath = "/images/";
+var locationhostname = window.location.hostname;
+var serverip = locationhostname;
 
+var locationport = window.location.port;
+var serverport = locationport;
+
+//manually override serverip and serverport
+//serverip = '10.1.140.64';
+//serverport = '3002';
+
+var imagepath = null; //set below
 var hasbeenmodified = false;
 var jsondate = new Date().toJSON();
 console.log(jsondate);
@@ -40,9 +46,12 @@ var makeboolean = function (v) {
     return n;
 }
 
-//var socket = io.connect('//10.1.140.64:3002');
-var socket = io.connect('//10.0.1.4:3002');
-socket.on('welcome', function(data) {});
+var socket = io.connect('//'+serverip+':'+serverport);
+socket.on('welcome', function(data) {
+    console.log(data.message);
+    console.log('Handshake address: ' + data.address);
+    imagepath = data.imagepath;
+});
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
 });

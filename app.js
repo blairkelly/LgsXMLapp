@@ -1,12 +1,12 @@
-//var thefile = "c://inetpub//wwwroot//lundbeck-lgstogether//Web//Content//xml//mosaic.xml";
-var thefile = "the.xml";
+var config = require('./config');
 
+var thefile = config.xmlfile;
+var imagepath = config.imagepath;
 
 var fs = require('fs');
 var app = require('express')(),           // start Express framework
     server = require('http').createServer(app), // start an HTTP server
     io = require('socket.io').listen(server);
-
 
 app.get('/', function (request, response) {
   response.sendfile(__dirname + '/index.html');
@@ -39,7 +39,7 @@ app.get('/bootstrap/js/bootstrap.min.js', function (request, response) {
 io.configure(function(){
   io.set('log level', 1);  //tells IO socket to be mostly quiet.
 });
-server.listen(3002);                    // listen for incoming requests on the server
+server.listen(config.serverport);                    // listen for incoming requests on the server
 
 
 // Send current time to all connected clients
@@ -85,8 +85,14 @@ function wfcb(towrite) {
 
 // Emit welcome message on connection
 io.sockets.on('connection', function(socket) {
-    console.log("Client connected.");
-    socket.emit('welcome', { message: 'Hi' }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
+    var address = socket.handshake.address;
+    console.log("Client connected at " + address.address + ":" + address.port);
+
+    socket.emit('welcome', { 
+        message: 'Hi',
+        address: address.address,
+        imagepath: imagepath
+    }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
     sendfileguts();
     
     socket.on('write to file', function(thedata) {

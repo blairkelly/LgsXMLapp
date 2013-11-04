@@ -1,4 +1,4 @@
-<?xml version="1.0"?><alldata>
+<alldata>
 
         <template>
                 <journey>
@@ -30,14 +30,14 @@
                         <story>&lt;i&gt;“The world was never meant for one as beautiful as you.”&lt;/i&gt;&lt;br&gt;&amp;mdash;Don McLean from the song “Vincent”</story>
                         <details>
                                 <name>Parent of a young son with LGS</name>
-                                <location/>
+                                <location>Nowhere</location>
                         </details>
                         <options>
                                 <repeatable>false</repeatable>
                                 <notexpandable>false</notexpandable>
                                 <disabled>false</disabled>
                         </options>
-                        <modified>2013-11-03T19:55:09.326Z</modified>
+                        <modified>2013-11-04T00:12:03.359Z</modified>
                         <created>2013-10-18T17:45:11.547Z</created>
                         <uid>e320b01b-10da-428c-a43e-8c70029bbc64</uid>
                 </journey><journey>
@@ -249,14 +249,14 @@ It is quite simple— that he lives with minimal discomfort and with maximum dig
 &lt;b&gt;Joy that filled my heart:&lt;/b&gt; I learned that she could hear me, but could not speak.</story>
                         <details>
                                 <name>Mother of daughter with LGS</name>
-                                <location/>
+                                <location>Ark</location>
                         </details>
                         <options>
                                 <repeatable>false</repeatable>
                                 <notexpandable>false</notexpandable>
                                 <disabled>false</disabled>
                         </options>
-                        <modified>2013-10-28T17:31:44.923Z</modified>
+                        <modified>2013-11-04T00:13:00.226Z</modified>
                         <created>2013-10-08T19:06:26.323Z</created>
                         <uid>9c99d4ad-8e89-4a0f-91d4-a11eb162612a</uid>
                 </journey><journey>
@@ -303,14 +303,14 @@ It is quite simple— that he lives with minimal discomfort and with maximum dig
                         <story>&lt;i&gt;“The greatest accomplishment is not in never falling, but in rising again after you fall.”&lt;/i&gt; &lt;br/&gt;—Vince Lombardi</story>
                         <details>
                                 <name>Parent of daughter with LGS</name>
-                                <location/>
+                                <location>Hi!</location>
                         </details>
                         <options>
                                 <repeatable>false</repeatable>
                                 <notexpandable>false</notexpandable>
                                 <disabled>false</disabled>
                         </options>
-                        <modified>2013-10-28T17:37:20.294Z</modified>
+                        <modified>2013-11-04T00:14:51.243Z</modified>
                         <created>2013-10-08T19:06:03.904Z</created>
                         <uid>c2d2e389-e07a-464d-adb3-0e124b879ff7</uid>
                 </journey><journey>
