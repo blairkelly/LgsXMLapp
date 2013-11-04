@@ -1,4 +1,11 @@
 
+
+SUGGESTIONS:
+
+--search of stories?
+
+
+
 NOT PRIORITY:
 
 -animate appropriately (in/out)

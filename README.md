@@ -4,13 +4,23 @@ LgsXMLapp
 For editing XML
 
 to run:
+You need to install NodeJS.
+
+Then, in the LgsXMLapp directory, from git bash prompt,
+npm install express
+npm install socket.io
+
+Then
+
 node app.js
 (from git bash prompt)
 
-npm install socket.io
-- if necessary
+/******************************/
 
-make sure you have appropriate permissions set on working folder
+
+
+
+make sure you have appropriate permissions set on working folder - if necessary
 
 
 
