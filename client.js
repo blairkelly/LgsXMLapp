@@ -51,6 +51,7 @@ socket.on('welcome', function(data) {
     console.log(data.message);
     console.log('Handshake address: ' + data.address);
     imagepath = data.imagepath;
+    $('.quickinfo').html("<span>XML:</span> " + data.xmlfile + "<br/><span>Images:</span> " + imagepath);
 });
 socket.on('time', function(data) {
     //$('#lastsaved').text(data.time);
@@ -121,7 +122,7 @@ var bindformactions = function (theticket) {
                     forlater.addClass('btn-danger');
                     forlater.text(forlater.data('ot'));
                 }
-            }, 789);
+            }, 1500);
         } else if($(this).hasClass('btn-warning')) {
             $('#destroystory').data('tokill', this);
             $('#destroystory').modal();
@@ -255,7 +256,6 @@ var fillticketholder = function () {
         newtt.find('.nombre').text(ttnombre);
         ttnombre++;
     });
-    //$('.numberofjourneys').text(journey.length + " journey(s).");
 }
 var loadXML = function (thedata) {
     xml = thedata,
@@ -275,7 +275,7 @@ socket.on('saved', function() {
     $('.btnsave').removeAttr('disabled');
     setTimeout(function () {
         $('#savedmodal').modal('hide');
-    }, 950);
+    }, 1500);
 });
 socket.on('error', function() { console.error(arguments) });
 socket.on('message', function() { console.log(arguments) });

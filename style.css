@@ -17,7 +17,7 @@ body {
 
 .ticket {padding: 10px; background: #ffffff; border: 1px solid #3fa8e9; margin-bottom: 20px; position: relative;}
 .ticket.collapsed {cursor: pointer;}
-.ticket.collapsed:hover {background: #e5fafd;}
+.ticket.collapsed:hover {background: #eefdfe;}
 .ticket .ticketpreview {display: none;}
 .ticket .ticketpreview .row-fluid>div {min-height: 0px;}
 .ticket .ticketpreview .first>img {max-height: 78px;}
@@ -53,7 +53,8 @@ body {
 
 .input-block-level {}
 
-.numberofjourneys {color: #345abc;}
+.quickinfo {color: #678;}
+.quickinfo span {color: #345abc;}
 
 @media only screen and (min-width : 1137px) {
   .editor-pad {

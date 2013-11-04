@@ -89,9 +89,10 @@ io.sockets.on('connection', function(socket) {
     console.log("Client connected at " + address.address + ":" + address.port);
 
     socket.emit('welcome', { 
-        message: 'Hi',
+        message: 'Welcome',
         address: address.address,
-        imagepath: imagepath
+        imagepath: imagepath,
+        xmlfile: thefile
     }); //was: socket.emit('welcome', { message: 'Hi', time: new Date().toJSON() });
     sendfileguts();
     
