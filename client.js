@@ -85,9 +85,8 @@ var ismodded = function(te, associatedticket) {
     } else {
         hasbeenmodified = true;
     }
-    //console.log("originl val: " + to_val);
-    //console.log("the new val: " + te_val);
 }
+
 var bindformactions = function (theticket) {
     var associatedxmlobj = theticket.data('associatedxmlobj');
     theticket.click(function() {
@@ -110,21 +109,14 @@ var bindformactions = function (theticket) {
         e.preventDefault();
         e.stopPropagation();
         var wt = $(this).data('warningtext');
-        var ot = $(this).text();
         if($(this).hasClass('btn-danger')) {
+            $(this).data('ot', $(this).text());
             $(this).removeClass('btn-danger');
             $(this).addClass('btn-warning');
             $(this).text(wt);
-            var forlater = $(this);
-            setTimeout(function() {
-                forlater.removeClass('btn-warning');
-                forlater.addClass('btn-danger');
-                forlater.text(ot);
-            }, 1111);
         } else if($(this).hasClass('btn-warning')) {
-            discardjourney(this);
-            dosave();
-            console.log("Discarded Journey");
+            $('#destroystory').data('tokill', this);
+            $('#destroystory').modal();
         }
     });
     theticket.find('.imageslocations>.thumb>input').focusout(function () {
@@ -308,7 +300,6 @@ $(document).ready(function() {
     $('.btnaddjourney').click(function(e) {
         e.preventDefault();
         addblankjourney();
-        console.log("Added Journey");
     });
     $('.btnexpandall').click(function(e) {
         e.preventDefault();
@@ -325,6 +316,27 @@ $(document).ready(function() {
             thisbtn.addClass('expanded').data('originaltext', thisbtn.text()).text(thisbtn.data('alttext'));
         }
         
+    });
+    var dsm = $('#destroystory'); //destroy story modal. not diagnostic and statistical manual....
+    dsm.find('.killbtn').on('click touchstart', function () {
+        dsm.data('todo', 'kill');
+        dsm.modal('hide');
+    });
+    dsm.find('.mercybtn').on('click touchstart', function () {
+        dsm.data('todo', 'mercy');
+        dsm.modal('hide');
+    });
+    dsm.on('hidden', function() {
+        var tokill = dsm.data('tokill');
+        var tk = $(tokill);
+        if (dsm.data('todo') == "kill") {
+            discardjourney(tokill);
+            //dosave();
+        } else {
+            tk.removeClass('btn-warning');
+            tk.addClass('btn-danger');
+            tk.text(tk.data('ot'));
+        }
     });
 
     document.addEventListener("keydown", function(e) {
